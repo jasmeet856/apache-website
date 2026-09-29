@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maison — Fine Dining</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0b0b0a;
+    color:#f7f2e9;
+    font-family:'DM Sans',sans-serif;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    padding:22px 7%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:rgba(11,11,10,.72);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:30px;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#c9a96a;
+}
+
+nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+nav a{
+    color:#ccc;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#c9a96a;
+}
+
+.reserve{
+    padding:12px 20px;
+    border:1px solid #c9a96a;
+    color:#c9a96a !important;
+}
+
+.menu-btn{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    padding:130px 7% 80px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:#c9a96a;
+    filter:blur(180px);
+    opacity:.09;
+
+    right:-150px;
+    top:100px;
+}
+
+.hero-content{
+    width:50%;
+    z-index:2;
+
+    animation:fadeUp 1s ease;
+}
+
+.small{
+    color:#c9a96a;
+    letter-spacing:4px;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+
+    font-size:clamp(55px,7vw,100px);
+
+    line-height:.95;
+
+    font-weight:600;
+
+    margin-bottom:30px;
+}
+
+.hero h1 span{
+    color:#c9a96a;
+}
+
+.hero p{
+    color:#aaa;
+    max-width:500px;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:15px 27px;
+    border:none;
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.gold{
+    background:#c9a96a;
+    color:#111;
+}
+
+.gold:hover{
+    background:#e0c58e;
+    transform:translateY(-3px);
+}
+
+.outline{
+    background:transparent;
+    border:1px solid #555;
+    color:white;
+}
+
+.outline:hover{
+    border-color:#c9a96a;
+    color:#c9a96a;
+}
+
+/* HERO IMAGE */
+
+.hero-image{
+    width:50%;
+    display:flex;
+    justify-content:center;
+
+    position:relative;
+}
+
+.image-box{
+    width:430px;
+    height:560px;
+
+    border-radius:220px 220px 20px 20px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(201,169,106,.4);
+
+    box-shadow:0 30px 100px rgba(0,0,0,.5);
+
+    animation:float 5s ease-in-out infinite;
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.number{
+    position:absolute;
+
+    bottom:20px;
+    right:40px;
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:#c9a96a;
+    color:#111;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:'Playfair Display',serif;
+    font-size:25px;
+}
+
+/* SECTION */
+
+section{
+    padding:110px 7%;
+}
+
+.section-head{
+    text-align:center;
+    max-width:650px;
+    margin:auto;
+}
+
+.section-head small{
+    color:#c9a96a;
+    letter-spacing:3px;
+}
+
+.section-head h2{
+    font-family:'Playfair Display',serif;
+    font-size:55px;
+    margin:15px 0;
+}
+
+.section-head p{
+    color:#999;
+    line-height:1.7;
+}
+
+/* MENU */
+
+.menu-grid{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+}
+
+.food-card{
+    background:#11110f;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:15px;
+
+    transition:.4s;
+}
+
+.food-card:hover{
+    transform:translateY(-10px);
+    border-color:#c9a96a;
+}
+
+.food-img{
+    height:270px;
+    overflow:hidden;
+}
+
+.food-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.food-card:hover img{
+    transform:scale(1.08);
+}
+
+.food-info{
+    padding:20px 5px 10px;
+}
+
+.food-info h3{
+    font-family:'Playfair Display',serif;
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.food-info p{
+    color:#888;
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+.bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    color:#c9a96a;
+    font-size:20px;
+}
+
+.add{
+    background:#c9a96a;
+    border:none;
+    padding:9px 15px;
+    cursor:pointer;
+}
+
+/* ABOUT */
+
+.about{
+    display:flex;
+    align-items:center;
+    gap:80px;
+
+    background:#11110f;
+}
+
+.about-img{
+    width:50%;
+    height:500px;
+}
+
+.about-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.about-text{
+    width:50%;
+}
+
+.about-text small{
+    color:#c9a96a;
+    letter-spacing:3px;
+}
+
+.about-text h2{
+    font-family:'Playfair Display',serif;
+    font-size:55px;
+    margin:15px 0 25px;
+}
+
+.about-text p{
+    color:#999;
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+/* RESERVATION */
+
+.reservation{
+    text-align:center;
+}
+
+.reservation-box{
+    max-width:800px;
+    margin:50px auto 0;
+
+    padding:50px;
+
+    border:1px solid rgba(201,169,106,.3);
+
+    background:#11110f;
+}
+
+.form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+input,select{
+    width:100%;
+    padding:16px;
+
+    background:#080807;
+    border:1px solid #333;
+
+    color:white;
+    outline:none;
+}
+
+input:focus,select:focus{
+    border-color:#c9a96a;
+}
+
+.full{
+    grid-column:1/3;
+}
+
+/* FOOTER */
+
+footer{
+    padding:35px 7%;
+
+    display:flex;
+    justify-content:space-between;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    color:#777;
+}
+
+/* CART */
+
+.cart{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    background:#c9a96a;
+    color:#111;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    z-index:500;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.cart span{
+    position:absolute;
+
+    top:-5px;
+    right:-5px;
+
+    background:#e74c3c;
+    color:white;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:11px;
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.8);
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    z-index:2000;
+}
+
+.popup.active{
+    display:flex;
+}
+
+.popup-box{
+    width:90%;
+    max-width:450px;
+
+    background:#151512;
+
+    padding:40px;
+
+    border:1px solid #c9a96a;
+
+    text-align:center;
+}
+
+.popup-box h2{
+    font-family:'Playfair Display',serif;
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.popup-box p{
+    color:#999;
+    margin-bottom:25px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    nav ul{
+        display:none;
+
+        position:absolute;
+        top:75px;
+        left:5%;
+        width:90%;
+
+        background:#11110f;
+
+        flex-direction:column;
+        padding:25px;
+
+        border:1px solid #333;
+    }
+
+    nav ul.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-content,
+    .hero-image{
+        width:100%;
+    }
+
+    .hero-content{
+        margin-bottom:60px;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .image-box{
+        width:320px;
+        height:420px;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        flex-direction:column;
+    }
+
+    .about-img,
+    .about-text{
+        width:100%;
+    }
+
+    .about-text h2{
+        font-size:43px;
+    }
+
+    .form{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        MAI<span>SON</span>
+    </div>
+
+    <ul id="nav">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#reserve">Reservation</a></li>
+    </ul>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small">
+            FINE DINING · EST. 1998
+        </div>
+
+        <h1>
+            Taste the art<br>
+            of <span>fine dining.</span>
+        </h1>
+
+        <p>
+            An unforgettable dining experience where seasonal
+            ingredients, timeless recipes and modern creativity
+            come together.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#menu">
+                <button class="btn gold">
+                    Explore Menu
+                </button>
+            </a>
+
+            <a href="#reserve">
+                <button class="btn outline">
+                    Reserve a Table
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-image">
+
+        <div class="image-box">
+
+            <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=90"
+            alt="Fine dining food">
+
+        </div>
+
+        <div class="number">
+            25+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+
+<section id="menu">
+
+    <div class="section-head">
+
+        <small>OUR MENU</small>
+
+        <h2>Signature dishes</h2>
+
+        <p>
+            Carefully crafted dishes made from the finest
+            seasonal ingredients.
+        </p>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+        <!-- CARD -->
+
+        <div class="food-card">
+
+            <div class="food-img">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80">
+            </div>
+
+            <div class="food-info">
+
+                <h3>Truffle Pasta</h3>
+
+                <p>
+                    Handmade pasta, black truffle,
+                    parmesan & cream.
+                </p>
+
+                <div class="bottom">
+
+                    <div class="price">
+                        ₹649
+                    </div>
+
+                    <button class="add"
+                    onclick="addCart('Truffle Pasta')">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <div class="food-img">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80">
+            </div>
+
+            <div class="food-info">
+
+                <h3>Grilled Steak</h3>
+
+                <p>
+                    Premium grilled steak with herbs,
+                    vegetables & sauce.
+                </p>
+
+                <div class="bottom">
+
+                    <div class="price">
+                        ₹899
+                    </div>
+
+                    <button class="add"
+                    onclick="addCart('Grilled Steak')">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <div class="food-img">
+                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=700&q=80">
+            </div>
+
+            <div class="food-info">
+
+                <h3>Creamy Risotto</h3>
+
+                <p>
+                    Italian risotto with parmesan,
+                    mushrooms & herbs.
+                </p>
+
+                <div class="bottom">
+
+                    <div class="price">
+                        ₹599
+                    </div>
+
+                    <button class="add"
+                    onclick="addCart('Creamy Risotto')">
+                        + Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div class="about-img">
+
+        <img
+        src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=90">
+
+    </div>
+
+
+    <div class="about-text">
+
+        <small>OUR STORY</small>
+
+        <h2>
+            More than a meal,
+            it's an experience.
+        </h2>
+
+        <p>
+            Maison was born from a simple idea:
+            food should bring people together.
+        </p>
+
+        <p>
+            From our kitchen to your table, every dish is
+            prepared with passion, patience and the best
+            ingredients we can find.
+        </p>
+
+        <button class="btn gold">
+            Discover Our Story
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- RESERVATION -->
+
+<section class="reservation" id="reserve">
+
+    <div class="section-head">
+
+        <small>RESERVATION</small>
+
+        <h2>Reserve your table</h2>
+
+        <p>
+            Make your evening memorable.
+        </p>
+
+    </div>
+
+
+    <div class="reservation-box">
+
+        <div class="form">
+
+            <input
+            type="text"
+            placeholder="Your Name">
+
+            <input
+            type="email"
+            placeholder="Email Address">
+
+            <input
+            type="date">
+
+            <select>
+                <option>2 Guests</option>
+                <option>3 Guests</option>
+                <option>4 Guests</option>
+                <option>5+ Guests</option>
+            </select>
+
+            <button
+            class="btn gold full"
+            onclick="reserve()">
+
+                Reserve Table
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        © 2026 Maison Restaurant
+    </div>
+
+    <div>
+        Crafted with ❤️
+    </div>
+
+</footer>
+
+
+<!-- CART -->
+
+<div class="cart" onclick="showCart()">
+
+    🛒
+
+    <span id="cartCount">
+        0
+    </span>
+
+</div>
+
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+    <div class="popup-box">
+
+        <h2 id="popupTitle">
+            Thank You!
+        </h2>
+
+        <p id="popupText">
+            Your request has been received.
+        </p>
+
+        <button
+        class="btn gold"
+        onclick="closePopup()">
+
+            Close
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let cart = 0;
+
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+    document
+    .getElementById("nav")
+    .classList.toggle("active");
+
+}
+
+
+/* ADD TO CART */
+
+function addCart(item){
+
+    cart++;
+
+    document
+    .getElementById("cartCount")
+    .innerText = cart;
+
+    document
+    .getElementById("popupTitle")
+    .innerText = "Added to Cart 🛒";
+
+    document
+    .getElementById("popupText")
+    .innerText =
+    item + " has been added to your cart.";
+
+    document
+    .getElementById("popup")
+    .classList.add("active");
+
+}
+
+
+/* CART */
+
+function showCart(){
+
+    document
+    .getElementById("popupTitle")
+    .innerText = "Your Cart 🛒";
+
+    document
+    .getElementById("popupText")
+    .innerText =
+    cart === 0
+    ? "Your cart is empty."
+    : "You have " + cart + " item(s) in your cart.";
+
+    document
+    .getElementById("popup")
+    .classList.add("active");
+
+}
+
+
+/* RESERVATION */
+
+function reserve(){
+
+    document
+    .getElementById("popupTitle")
+    .innerText = "Reservation Received ✨";
+
+    document
+    .getElementById("popupText")
+    .innerText =
+    "Thank you! We will contact you shortly to confirm your table.";
+
+    document
+    .getElementById("popup")
+    .classList.add("active");
+
+}
+
+
+/* CLOSE POPUP */
+
+function closePopup(){
+
+    document
+    .getElementById("popup")
+    .classList.remove("active");
+
+}
+
+</script>
+
+</body>
+</html>
